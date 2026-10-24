@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZONE 13: Infestation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@700&family=Barlow:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --noche: #0b1211;
+            --hueso: #cfd2d2;
+            --brasa: #d9822b;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--noche);
+            color: var(--hueso);
+            font-family: "Barlow", sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .portada {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 6rem 2rem 4rem;
+            background:
+                linear-gradient(to top, #0b1211 4%, rgba(11, 18, 17, 0.35) 55%, rgba(11, 18, 17, 0.6)),
+                url("img/portada.png") center / cover no-repeat;
+        }
+
+        h1 {
+            font-family: "Pixelify Sans", monospace;
+            font-size: clamp(3rem, 10vw, 6.5rem);
+            line-height: 1;
+            margin: 0;
+            text-shadow: 0 4px 0 #000;
+        }
+
+        .sub {
+            font-family: "Pixelify Sans", monospace;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--brasa);
+            margin: 0.3rem 0 1rem;
+        }
+
+        .lema {
+            max-width: 34rem;
+            margin: 0 0 1.8rem;
+        }
+
+        .boton {
+            align-self: flex-start;
+            font-family: "Pixelify Sans", monospace;
+            font-size: 1.2rem;
+            padding: 0.8rem 1.6rem;
+            background: #4d6b48;
+            color: #fff;
+            text-decoration: none;
+            border: 3px solid var(--hueso);
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .boton:hover {
+            background: var(--brasa);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(11, 18, 17, 0.9);
+            border-bottom: 2px solid #4d4c4b;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--hueso);
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--brasa);
+        }
+
+        .marca {
+            font-family: "Pixelify Sans", monospace;
+            font-size: 1.3rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 4.5rem;
+        }
+
+        .bloque {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        h2 {
+            font-family: "Pixelify Sans", monospace;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 0 0 1.5rem;
+        }
+
+        .intro {
+            max-width: 42rem;
+        }
+
+        .rasgos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .rasgos div {
+            border-left: 4px solid #4d6b48;
+            padding-left: 1rem;
+        }
+
+        h3 {
+            font-family: "Pixelify Sans", monospace;
+            font-size: 1.4rem;
+            color: var(--brasa);
+            margin: 0 0 0.3rem;
+        }
+
+        .rasgos p {
+            margin: 0;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .captura {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: 3px solid #4d4c4b;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            color: #4d4c4b;
+            font-family: "Pixelify Sans", monospace;
+        }
+
+        .captura img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video {
+            aspect-ratio: 16 / 9;
+            max-width: 860px;
+            background: #000;
+            border: 3px solid #4d4c4b;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 1rem;
+            font-family: "Pixelify Sans", monospace;
+            font-size: 1.4rem;
+            color: #4d4c4b;
+        }
+
+        .boton.apagado {
+            background: #4d4c4b;
+            border-color: #4d4c4b;
+            box-shadow: none;
+        }
+
+        .redes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .redes a {
+            font-family: "Pixelify Sans", monospace;
+            padding: 0.6rem 1.2rem;
+            border: 3px solid #4d4c4b;
+            color: var(--hueso);
+            text-decoration: none;
+        }
+
+        .redes a:hover {
+            border-color: var(--brasa);
+            color: var(--brasa);
+        }
+
+        footer {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-top: 2px solid #4d4c4b;
+            color: #8a8d8d;
+            font-size: 0.95rem;
+        }
+
+        #menu-btn {
+            display: none;
+            background: none;
+            border: 2px solid #4d4c4b;
+            color: var(--hueso);
+            font-family: "Pixelify Sans", monospace;
+            font-size: 1rem;
+            padding: 0.3rem 0.9rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 760px) {
+            nav {
+                padding: 0.8rem 1.2rem;
+            }
+
+            #menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: var(--noche);
+                border-bottom: 2px solid #4d4c4b;
+            }
+
+            nav ul.abierto {
+                display: flex;
+            }
+
+            nav ul a {
+                display: block;
+                padding: 0.9rem 1.2rem;
+                border-top: 1px solid #4d4c4b;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="marca" href="#inicio">ZONE 13</a>
+            <button id="menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
+            <ul id="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#juego">El juego</a></li>
+                <li><a href="#capturas">Capturas</a></li>
+                <li><a href="#trailer">Tráiler</a></li>
+                <li><a href="#descargar">Descargar</a></li>
+                <li><a href="#redes">Redes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="portada" id="inicio">
+        <h1>ZONE 13</h1>
+        <p class="sub">Infestation</p>
+        <p class="lema">Sobrevive a las oleadas, mejora tu arsenal y defiende el último rincón de la ciudad.</p>
+        <a class="boton" href="#descargar">Próximamente</a>
+    </section>
+
+    <section class="bloque" id="juego">
+        <h2>El juego</h2>
+        <p class="intro">Texto de ejemplo. Aquí va la descripción del juego: qué pasó con la ciudad, quién eres y qué te
+            espera en cada oleada.</p>
+        <div class="rasgos">
+            <div>
+                <h3>Oleadas sin tregua</h3>
+                <p>Zombis y monstruos cada vez más fuertes. Texto de ejemplo.</p>
+            </div>
+            <div>
+                <h3>Armas y accesorios</h3>
+                <p>Fusiles, pistolas y ametralladoras con accesorios que cambian cómo juegas.</p>
+            </div>
+            <div>
+                <h3>Mejora y equipa</h3>
+                <p>Gana dinero, compra munición y sube de nivel tus armas favoritas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bloque" id="capturas">
+        <h2>Capturas</h2>
+        <div class="galeria">
+            <div class="captura">Captura 1<img src="img/captura1.png" alt="Captura del juego 1" loading="lazy"
+                    onerror="this.remove()"></div>
+            <div class="captura">Captura 2<img src="img/captura2.png" alt="Captura del juego 2" loading="lazy"
+                    onerror="this.remove()"></div>
+            <div class="captura">Captura 3<img src="img/captura3.png" alt="Captura del juego 3" loading="lazy"
+                    onerror="this.remove()"></div>
+            <div class="captura">Captura 4<img src="img/captura4.png" alt="Captura del juego 4" loading="lazy"
+                    onerror="this.remove()"></div>
+            <div class="captura">Captura 5<img src="img/captura5.png" alt="Captura del juego 5" loading="lazy"
+                    onerror="this.remove()"></div>
+            <div class="captura">Captura 6<img src="img/captura6.png" alt="Captura del juego 6" loading="lazy"
+                    onerror="this.remove()"></div>
+        </div>
+    </section>
+    <section class="bloque" id="trailer">
+        <h2>Tráiler</h2>
+        <div class="video">El tráiler llegará pronto</div>
+    </section>
+
+    <section class="bloque" id="descargar">
+        <h2>Descargar</h2>
+        <p class="intro">Aún no hay descarga disponible. Síguenos en redes para enterarte el día que salga.</p>
+        <p><a class="boton apagado" href="#redes">Próximamente</a></p>
+    </section>
+
+    <section class="bloque" id="redes">
+        <h2>Redes</h2>
+        <div class="redes">
+            <a href="#">YouTube</a>
+            <a href="#">TikTok</a>
+            <a href="#">Instagram</a>
+            <a href="#">Discord</a>
+        </div>
+    </section>
+
+    <footer>© 2026 ZONE 13: Infestation. Todos los derechos reservados.</footer>
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('menu');
+        btn.addEventListener('click', () => {
+            const abierto = menu.classList.toggle('abierto');
+            btn.setAttribute('aria-expanded', abierto);
+        });
+        menu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                menu.classList.remove('abierto');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+</body>
+
+</html>
